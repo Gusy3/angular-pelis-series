@@ -1,3 +1,25 @@
 body{
-    background-color: aquamarine;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+
+    /* FUENTES */
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: antialiased;
+}
+
+#header{
+    height: 70px;
+    width: 100%;
+    background-color: white;
+}
+
+#header h1{
+    display: inline-block;
+    font-family: MV Boli;
+    font-size: 35px;
+    line-height: 23px;
+    color: #E20000;
 }
