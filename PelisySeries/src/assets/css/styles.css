@@ -10,6 +10,16 @@ body{
     -moz-osx-font-smoothing: antialiased;
 }
 
+.center{
+    width: 85%;
+    margin: 0px auto;
+}
+
+.clearfix{
+    clear: both;
+    float: none;
+}
+
 /* HEADER */
 
 #header{
