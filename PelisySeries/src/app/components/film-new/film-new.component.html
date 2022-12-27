@@ -1,0 +1,120 @@
+<section id="content">
+
+    <h1 class="subheader">{{subheaderTitle}}</h1>
+
+    <form class="mid-form" #filmForm="ngForm" (ngSubmit)="filmForm.valid && onSubmit()">
+
+        <div class="form-group">
+            <label for="title">Título</label>
+            <input type="text" name="title" #title="ngModel" [(ngModel)]="film.title"
+                [ngClass]="{ 'input-error': !title.valid && (title.dirty || title.touched || filmForm.submitted) }"
+                required
+            />
+
+            <small class="msg-validator" *ngIf="!title.valid && (title.dirty || title.touched || filmForm.submitted)">El título es requerido</small>
+        </div>
+
+        <div class="form-group">
+            <label for="gender" >Género</label>
+            <select name="gender" #gender="ngModel" [(ngModel)]="film.gender"
+                [ngClass]="{ 'input-error': !gender.valid && (gender.dirty || gender.touched || filmForm.submitted) }"
+                required
+            >
+                <option value="">----- Selecciona el Género -----</option>
+                <option *ngFor="let gender of genders">{{ gender }}</option>
+            </select>
+
+            <small class="msg-validator" *ngIf="!gender.valid && (gender.dirty || gender.touched || filmForm.submitted)">No has seleccionado ningún género, por favor selecciona uno</small>
+        </div>
+
+        <div class="form-group">
+            <label for="year">Año</label>
+            <input type="text" name="year" #year="ngModel" [(ngModel)]="film.year"
+                [ngClass]="{ 'input-error': !year.valid && (year.dirty || year.touched || filmForm.submitted) }"
+                pattern="[1-9]\d{3}" required
+            />
+
+            <small class="msg-validator" *ngIf="!year.valid && year.value==='' && (year.dirty || year.touched || filmForm.submitted)">El año es requerido</small>
+            <small class="msg-validator" *ngIf="!year.valid && (year.value!='' || year.value=='0') && (year.dirty || year.touched || filmForm.submitted)">El año introducido no es válido</small>
+        </div>
+
+        <div class="form-group">
+            <label for="resolution" >Resolución</label>
+            <select name="resolution" #resolution="ngModel" [(ngModel)]="film.resolution"
+                [ngClass]="{ 'input-error': !resolution.valid && (resolution.dirty || resolution.touched || filmForm.submitted) }"
+                required
+            >
+                <option value="">----- Selecciona la Resolución -----</option>
+                <option *ngFor="let resolution of resolutions">{{ resolution }}</option>
+            </select>
+
+            <small class="msg-validator" *ngIf="!resolution.valid && (resolution.dirty || resolution.touched || filmForm.submitted)">No has seleccionado ninguna resolución, por favor selecciona una</small>
+        </div>
+
+        <div class="form-group">
+            <label for="codec" >Códec</label>
+            <select name="codec" #codec="ngModel" [(ngModel)]="film.codec"
+                [ngClass]="{ 'input-error': !codec.valid && (codec.dirty || codec.touched || filmForm.submitted) }"
+                required
+            >
+                <option value="">----- Selecciona el Códec -----</option>
+                <option *ngFor="let codec of codecs">{{ codec }}</option>
+            </select>
+
+            <small class="msg-validator" *ngIf="!codec.valid && (codec.dirty || codec.touched || filmForm.submitted)">No has seleccionado ningún códec, por favor selecciona uno</small>
+        </div>
+
+        <div class="form-group">
+            <label for="size">Tamaño</label>
+            <input type="text" name="size" #size="ngModel" [(ngModel)]="film.size"
+                [ngClass]="{ 'input-error': !size.valid && (size.dirty || size.touched || filmForm.submitted) }"
+                pattern="[0-9]+([\.][0-9]+)?" required
+            />
+
+            <small class="msg-validator" *ngIf="!size.valid && size.value==='' && (size.dirty || size.touched || filmForm.submitted)">El tamaño es requerido</small>
+            <small class="msg-validator" *ngIf="!size.valid && size.value!='' && (size.dirty || size.touched || filmForm.submitted)">El tamaño introducido no es válido</small>
+        </div>
+
+        <div class="form-group">
+            <label for="viewed" >Visto</label>
+            <select name="viewed" #viewed="ngModel" [(ngModel)]="film.viewed"
+                [ngClass]="{ 'input-error': !viewed.valid && (viewed.dirty || viewed.touched || filmForm.submitted) }"
+                required
+            >
+                <option value="">----- Selecciona si la has visto -----</option>
+                <option *ngFor="let viewed of vieweds">{{ viewed }}</option>
+            </select>
+
+            <small class="msg-validator" *ngIf="!viewed.valid && (viewed.dirty || viewed.touched || filmForm.submitted)">No has seleccionado si lo has visto, por favor selecciona uno</small>
+        </div>
+
+        <div class="form-group">
+            <label for="synopsis">Sinopsis</label>
+            <textarea
+                name="synopsis" #synopsis="ngModel" [(ngModel)]="film.synopsis"
+                [ngClass]="{ 'input-error': !synopsis.valid && (synopsis.dirty || synopsis.touched || filmForm.submitted) }"
+                required>
+            </textarea>
+
+            <small class="msg-validator" *ngIf="!synopsis.valid && (synopsis.dirty || synopsis.touched || filmForm.submitted)">La Sinopsis es requerida</small>
+        </div>
+
+        <div class="form-group">
+            <label for="imageUrl">Imagén</label>
+            <input type="url" name="imageUrl" #imageUrl="ngModel" [(ngModel)]="film.image"
+                [ngClass]="{ 'input-error': !imageUrl.valid && (imageUrl.dirty || imageUrl.touched || filmForm.submitted) }"
+                placeholder="https://example.jpg | jpeg | gif | png"
+                pattern="^https?:\/\/.*\.(?:jpg|jpeg|gif|png)$"
+            />
+
+            <small class="msg-validator" *ngIf="!imageUrl.valid && (imageUrl.dirty || imageUrl.touched || filmForm.submitted)">La url de la imagen introducida no es valida</small>
+        </div>
+
+        <!-- LIMPIAR FLOTADOS -->
+        <div class="clearfix"></div>
+
+        <input type="submit" value="{{submitValue}}" class="btn btn-success" />
+
+    </form>
+
+  </section>
