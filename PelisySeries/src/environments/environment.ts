@@ -4,9 +4,10 @@
 
 export const environment = {
   production: false,
-  genders: ['Acción', 'Ciencia Ficción', 'Comedia', 'Drama', 'Fantasía', 'Melodrama', 'Musical', 'Romance', 'Suspense', 'Terror'],
+  genders: ['Acción', 'Animación', 'Ciencia Ficción', 'Comedia', 'Drama', 'Fantasía', 'Melodrama', 'Musical', 'Romance', 'Suspense', 'Terror', 'Thriller'],
   resolutions: ['1080p', '720p'],
   codecs: ['x265', 'x264'],
+  viewed: ['Sí', 'No'],
   apiUrl: 'http://localhost:3900/api/'
 };
 
