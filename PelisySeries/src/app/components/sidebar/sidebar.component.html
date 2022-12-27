@@ -2,17 +2,17 @@
 
     <div id="nav-blog" class="sidebar-item">
         <h3>Puedes hacer esto</h3>
-        <a class="btn btn-success">Añadir pelicula</a>
+        <a class="btn btn-success" [routerLink]="['/crear-pelicula']">Añadir pelicula</a>
     </div>
 
     <div id="search" class="sidebar-item">
         <h3>Buscador</h3>
         <p>Encuentra lo que buscas</p>
 
-        <form>
+        <form #searchForm="ngForm" (ngSubmit)="goSearch()">
             <div class="form-group">
-                <label for="title">Nombre</label>
-                <input type="text" name="nombre" />
+                <label for="title">Título</label>
+                <input type="text" [(ngModel)]="title" name="title" />
             </div>
             <input type="submit" name="submit" value="Buscar" class="btn btn-success"/>
         </form>
