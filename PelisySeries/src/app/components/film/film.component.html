@@ -1,0 +1,62 @@
+<section id="content">
+
+    <h1 class="subheader">{{ film.title }}</h1>
+
+    <div class="center film-detail">
+
+        <div class="image">
+
+            <img src="../../../assets/images/no-image.png" *ngIf="film.image==''" />
+            <img src="{{ film.image }}" *ngIf="film.image!=''" />
+
+        </div>
+        
+        <div class="data">
+
+            <dl>
+
+                <dt>Año:</dt>
+                <dd>{{film.year}}</dd>
+
+                <dt>Género:</dt>
+                <dd>{{film.gender}}</dd>
+                
+                <dt>Resolución:</dt>
+                <dd>{{film.resolution}}</dd>
+                
+                <dt>Codec:</dt>
+                <dd>{{film.codec}}</dd>
+                
+                <dt>Tamaño:</dt>
+                <dd>{{film.size}} GB</dd>
+
+                <dt>Creado:</dt>
+                <dd>{{film.created_at | amLocal | amDateFormat: 'DD/MM/YYYY'}}</dd>
+                
+                <dt>Visto:</dt>
+                <dd>{{film.viewed}}</dd>
+
+            </dl>
+
+        </div>
+
+        <div class="clearfix"></div>
+        
+        <div class="synopsis">
+
+            <h2>Sinopsis</h2>
+
+            <p>{{ film.synopsis }}</p>
+
+        </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="buttons">
+        <a [routerLink]="['/pelicula/editar', film._id]" class="btn btn-warning">Editar</a>
+        <a (click)="delete(film._id)" class="btn btn-danger">Borrar</a>
+    </div>
+
+</section>
