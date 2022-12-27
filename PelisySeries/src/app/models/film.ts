@@ -1,4 +1,4 @@
-export class Pelicula{
+export class Film{
 
     constructor(
         public _id: String,
@@ -10,6 +10,7 @@ export class Pelicula{
         public size: Number,
         public synopsis: String,
         public image: String,
+        public viewed: String,
         public created_at: Date
     ){}
 
