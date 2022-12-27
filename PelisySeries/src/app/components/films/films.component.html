@@ -1,0 +1,34 @@
+<section id="content">
+
+    <h1 class="subheader">PELÍCULAS</h1>
+
+    <div id="films" *ngIf="films && films.length==0">
+
+        <p>No hay películas para mostrar</p>
+
+    </div>
+
+    <div id="films" *ngIf="films">
+
+        <a *ngFor="let film of films | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; index as i"
+            [routerLink]="['/pelicula/', film._id]"
+            class="film"
+        >
+
+            <img src="../../../assets/images/no-image.png" *ngIf="film.image==''" />
+            <img src="{{ film.image }}" *ngIf="film.image!=''" />
+
+            <h2>{{ film.title }}</h2>
+
+            <p>Añadido {{ film.created_at | amLocale:'es' | amTimeAgo }}</p>
+
+        </a>
+
+        <div class="clearfix"></div>
+
+        <pagination-controls (pageChange)="page = $event" [autoHide]="true" [directionLinks]="false"></pagination-controls>
+
+    </div>
+    
+
+</section>
