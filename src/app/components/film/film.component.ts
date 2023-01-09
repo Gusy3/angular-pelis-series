@@ -21,7 +21,7 @@ export class FilmComponent implements OnInit{
     private _route: ActivatedRoute,
     private _router: Router
   ){
-    this.film = new Film('', '', '', 0, '', '', 0, '', '', '', new Date());
+    this.film = new Film('', '', '', '', 0, '', '', 0, '', '', '', new Date());
     this.apiUrl = environment.apiUrl;
   }
 
