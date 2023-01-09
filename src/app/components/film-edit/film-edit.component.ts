@@ -16,6 +16,7 @@ export class FilmEditComponent implements OnInit{
   public subheaderTitle: String;
   public submitValue: String;
   public film: Film;
+  public versions: String[];
   public genders: String[];
   public resolutions: String[];
   public codecs: String[];
@@ -29,10 +30,11 @@ export class FilmEditComponent implements OnInit{
     
     this.subheaderTitle = 'EDITAR PELÍCULA';
     this.submitValue = 'Editar';
-    this.film = new Film('', '', '', 0, '', '', 0, '', '', '', new Date());
+    this.film = new Film('', '', '', '', 0, '', '', 0, '', '', '', new Date());
+    this.versions = environment.versions;
+    this.genders = environment.genders;
     this.resolutions = environment.resolutions;
     this.codecs = environment.codecs;
-    this.genders = environment.genders;
     this.vieweds = environment.viewed;
 
   }

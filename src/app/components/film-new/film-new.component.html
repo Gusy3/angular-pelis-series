@@ -15,6 +15,19 @@
         </div>
 
         <div class="form-group">
+            <label for="version" >Versión</label>
+            <select name="version" #version="ngModel" [(ngModel)]="film.version"
+                [ngClass]="{ 'input-error': !version.valid && (version.dirty || version.touched || filmForm.submitted) }"
+                required
+            >
+                <option value="">----- Selecciona la Versíon -----</option>
+                <option *ngFor="let version of versions">{{ version }}</option>
+            </select>
+
+            <small class="msg-validator" *ngIf="!version.valid && (version.dirty || version.touched || filmForm.submitted)">No has seleccionado ninguna versión, por favor selecciona una</small>
+        </div>
+
+        <div class="form-group">
             <label for="gender" >Género</label>
             <select name="gender" #gender="ngModel" [(ngModel)]="film.gender"
                 [ngClass]="{ 'input-error': !gender.valid && (gender.dirty || gender.touched || filmForm.submitted) }"

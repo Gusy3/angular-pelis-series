@@ -16,6 +16,7 @@ export class FilmNewComponent implements OnInit{
   public subheaderTitle: String;
   public submitValue: String;
   public film: Film;
+  public versions: String[];
   public genders: String[];
   public resolutions: String[];
   public codecs: String[];
@@ -28,10 +29,11 @@ export class FilmNewComponent implements OnInit{
 
     this.subheaderTitle = 'CREAR PELÍCULA';
     this.submitValue = 'Crear';
-    this.film = new Film('', '', '', 0, '', '', 0, '', '', '', new Date());
+    this.film = new Film('', '', '', '', 0, '', '', 0, '', '', '', new Date());
+    this.versions = environment.versions;
+    this.genders = environment.genders;
     this.resolutions = environment.resolutions;
     this.codecs = environment.codecs;
-    this.genders = environment.genders;
     this.vieweds = environment.viewed;
 
   }
