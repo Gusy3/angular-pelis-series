@@ -3,6 +3,7 @@ export class Film{
     constructor(
         public _id: String,
         public title: String,
+        public version: String,
         public gender: String,
         public year: Number,
         public resolution: String,
