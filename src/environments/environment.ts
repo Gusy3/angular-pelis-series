@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  versions: ['Normal', 'Extendida'],
   genders: ['Acción', 'Animación', 'Ciencia Ficción', 'Comedia', 'Drama', 'Fantasía', 'Melodrama', 'Musical', 'Romance', 'Suspense', 'Terror', 'Thriller'],
   resolutions: ['1080p', '720p'],
   codecs: ['x265', 'x264'],
