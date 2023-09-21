@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   versions: ['Normal', 'Extendida'],
   genders: ['Acción', 'Animación', 'Aventuras', 'Biográfico', 'Bélico', 'Ciencia Ficción', 'Comedia', 'Crimen', 'Drama', 'Fantastico', 'Infantil', 'Intriga', 'Melodrama', 'Musical', 'Romance', 'Sobrenatural', 'Suspense', 'Terror', 'Thriller', 'Western'],
   resolutions: ['1080p', '720p'],
