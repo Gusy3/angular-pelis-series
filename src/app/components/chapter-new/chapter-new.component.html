@@ -1,0 +1,81 @@
+<section id="content">
+
+    <h1 class="subheader">{{subheaderTitle}}</h1>
+
+    <form class="mid-form" #chapterForm="ngForm" (ngSubmit)="chapterForm.valid && onSubmit()">
+
+        <div class="form-group">
+            <label for="title">Título:</label>
+            <input type="text" name="title" #title="ngModel" [(ngModel)]="chapter.title"
+                [ngClass]="{ 'input-error': !title.valid && (title.dirty || title.touched || chapterForm.submitted) }"
+                required
+            />
+
+            <small class="msg-validator" *ngIf="!title.valid && (title.dirty || title.touched || chapterForm.submitted)">El título es requerido</small>
+        </div>
+
+        <div class="form-group">
+            <label for="resolution" >Resolución:</label>
+            <select name="resolution" #resolution="ngModel" [(ngModel)]="chapter.resolution"
+                [ngClass]="{ 'input-error': !resolution.valid && (resolution.dirty || resolution.touched || chapterForm.submitted) }"
+                required
+            >
+                <option value="">----- Selecciona la Resolución -----</option>
+                <option *ngFor="let resolution of resolutions">{{ resolution }}</option>
+            </select>
+
+            <small class="msg-validator" *ngIf="!resolution.valid && (resolution.dirty || resolution.touched || chapterForm.submitted)">No has seleccionado ninguna resolución, por favor selecciona una</small>
+        </div>
+
+        <div class="form-group">
+            <label for="codec" >Códec:</label>
+            <select name="codec" #codec="ngModel" [(ngModel)]="chapter.codec"
+                [ngClass]="{ 'input-error': !codec.valid && (codec.dirty || codec.touched || chapterForm.submitted) }"
+                required
+            >
+                <option value="">----- Selecciona el Códec -----</option>
+                <option *ngFor="let codec of codecs">{{ codec }}</option>
+            </select>
+
+            <small class="msg-validator" *ngIf="!codec.valid && (codec.dirty || codec.touched || chapterForm.submitted)">No has seleccionado ningún códec, por favor selecciona uno</small>
+        </div>
+
+        <div class="form-group">
+            <label for="size">Tamaño:</label>
+            <input type="text" name="size" #size="ngModel" [(ngModel)]="chapter.size"
+                [ngClass]="{ 'input-error': (!size.valid || chapter.size==0) && (size.dirty || size.touched || chapterForm.submitted) }"
+                pattern="[0-9]+([\.][0-9]+)?" required
+            />
+
+            <small class="msg-validator" *ngIf="!size.valid && size.value==='' && (size.dirty || size.touched || chapterForm.submitted)">El tamaño es requerido</small>
+            <small class="msg-validator" *ngIf="(!size.valid || chapter.size==0) && size.value!=='' && (size.dirty || size.touched || chapterForm.submitted)">El tamaño introducido no es válido</small>
+        </div>
+
+        <div class="form-group">
+            <label for="viewed">Visto:</label>
+
+            <div class="radio">
+
+                <input type="radio" name="viewed" #viewed="ngModel" value="Sí" [(ngModel)]="chapter.viewed"
+                    [ngClass]="{ 'input-error': !viewed.valid && chapterForm.submitted }"
+                    required />
+                <label for="si">Sí</label>
+                
+                <input type="radio" name="viewed" #viewed="ngModel" value="No" [(ngModel)]="chapter.viewed"
+                    [ngClass]="{ 'input-error': !viewed.valid && chapterForm.submitted }"
+                    required />
+                <label for="no">No</label>
+
+            </div>
+
+            <small class="msg-validator" *ngIf="!viewed.valid && chapterForm.submitted">No has seleccionado si lo has visto, por favor selecciona uno</small>
+        </div>
+
+        <!-- LIMPIAR FLOTADOS -->
+        <div class="clearfix"></div>
+
+        <input type="submit" value="{{submitValue}}" class="btn btn-success" />
+
+    </form>
+
+  </section>

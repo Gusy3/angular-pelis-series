@@ -1,0 +1,89 @@
+<section id="content">
+
+    <h1 class="subheader">{{subheaderTitle}}</h1>
+
+    <form class="mid-form" #serieForm="ngForm" (ngSubmit)="serieForm.valid && onSubmit()">
+
+        <div class="form-group">
+            <label for="title">Título:</label>
+            <input type="text" name="title" #title="ngModel" [(ngModel)]="serie.title"
+                [ngClass]="{ 'input-error': !title.valid && (title.dirty || title.touched || serieForm.submitted) }"
+                required
+            />
+
+            <small class="msg-validator" *ngIf="!title.valid && (title.dirty || title.touched || serieForm.submitted)">El título es requerido</small>
+        </div>
+
+        <div class="form-group">
+            <label for="gender" >Género:</label>
+            <select name="gender" #gender="ngModel" [(ngModel)]="serie.gender"
+                [ngClass]="{ 'input-error': !gender.valid && (gender.dirty || gender.touched || serieForm.submitted) }"
+                class="multiple" required multiple
+            >
+                <option *ngFor="let gender of genders" [value]="gender">{{ gender }}</option>            
+            </select>
+
+            <small class="msg-validator" *ngIf="!gender.valid && (gender.dirty || gender.touched || serieForm.submitted)">No has seleccionado ningún género, por favor selecciona uno</small>
+        </div>
+
+        <div class="form-group">
+            <label for="year">Año:</label>
+            <input type="text" name="year" #year="ngModel" [(ngModel)]="serie.year"
+                [ngClass]="{ 'input-error': !year.valid && (year.dirty || year.touched || serieForm.submitted) }"
+                pattern="[1-9]\d{3}" required
+            />
+
+            <small class="msg-validator" *ngIf="!year.valid && year.value==='' && (year.dirty || year.touched || serieForm.submitted)">El año es requerido</small>
+            <small class="msg-validator" *ngIf="!year.valid && (year.value!='' || year.value=='0') && (year.dirty || year.touched || serieForm.submitted)">El año introducido no es válido</small>
+        </div>
+
+        <div class="form-group">
+            <label for="viewed">Visto:</label>
+
+            <div class="radio">
+
+                <input type="radio" name="viewed" #viewed="ngModel" value="Sí" [(ngModel)]="serie.viewed"
+                    [ngClass]="{ 'input-error': !viewed.valid && serieForm.submitted }"
+                    required />
+                <label for="si">Sí</label>
+                
+                <input type="radio" name="viewed" #viewed="ngModel" value="No" [(ngModel)]="serie.viewed"
+                    [ngClass]="{ 'input-error': !viewed.valid && serieForm.submitted }"
+                    required />
+                <label for="no">No</label>
+
+            </div>
+
+            <small class="msg-validator" *ngIf="!viewed.valid && serieForm.submitted">No has seleccionado si lo has visto, por favor selecciona uno</small>
+        </div>
+
+        <div class="form-group">
+            <label for="synopsis">Sinopsis:</label>
+            <textarea
+                name="synopsis" #synopsis="ngModel" [(ngModel)]="serie.synopsis"
+                [ngClass]="{ 'input-error': !synopsis.valid && (synopsis.dirty || synopsis.touched || serieForm.submitted) }"
+                required>
+            </textarea>
+
+            <small class="msg-validator" *ngIf="!synopsis.valid && (synopsis.dirty || synopsis.touched || serieForm.submitted)">La Sinopsis es requerida</small>
+        </div>
+
+        <div class="form-group">
+            <label for="imageUrl">Imagen:</label>
+            <input type="url" name="imageUrl" #imageUrl="ngModel" [(ngModel)]="serie.image"
+                [ngClass]="{ 'input-error': !imageUrl.valid && (imageUrl.dirty || imageUrl.touched || serieForm.submitted) }"
+                placeholder="https://example.jpg | jpeg | gif | png"
+                pattern="^https?:\/\/.*\.(?:jpg|jpeg|gif|png)$"
+            />
+
+            <small class="msg-validator" *ngIf="!imageUrl.valid && (imageUrl.dirty || imageUrl.touched || serieForm.submitted)">La url de la imagen introducida no es valida</small>
+        </div>
+
+        <!-- LIMPIAR FLOTADOS -->
+        <div class="clearfix"></div>
+
+        <input type="submit" value="{{submitValue}}" class="btn btn-success" />
+
+    </form>
+
+  </section>

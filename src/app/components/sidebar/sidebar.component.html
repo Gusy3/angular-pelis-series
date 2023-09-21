@@ -3,16 +3,23 @@
     <div id="nav-blog" class="sidebar-item">
         <h3>Puedes hacer esto</h3>
         <a class="btn btn-success" [routerLink]="['/crear-pelicula']">Añadir pelicula</a>
+        <hr>
+        <a class="btn btn-success" [routerLink]="['/crear-serie']">Añadir serie</a>
     </div>
 
     <div id="search" class="sidebar-item">
         <h3>Buscador</h3>
         <p>Encuentra lo que buscas</p>
 
-        <form #searchForm="ngForm" (ngSubmit)="goSearch()">
+        <form #searchForm="ngForm" (ngSubmit)="searchForm.valid && goSearch()">
             <div class="form-group">
-                <label for="title">Título</label>
-                <input type="text" [(ngModel)]="title" name="title" />
+                <label for="title">Título:</label>
+                <input type="text" name="title" #title="ngModel" [(ngModel)]="search"
+                    [ngClass]="{ 'input-error': !title.valid && (title.dirty || title.touched || searchForm.submitted) }"
+                    required
+                />
+    
+                <small class="msg-validator" *ngIf="!title.valid && (title.dirty || title.touched || searchForm.submitted)">El título es requerido</small>
             </div>
             <input type="submit" name="submit" value="Buscar" class="btn btn-success"/>
         </form>

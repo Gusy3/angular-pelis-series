@@ -1,0 +1,42 @@
+<section id="content">
+
+    <h1 class="subheader">SERIES: {{ series.length }}</h1>
+
+    <div id="items" *ngIf="series && series.length==0">
+
+        <p>No hay series para mostrar</p>
+
+    </div>
+
+    <div id="items" *ngIf="series">
+
+        <a *ngFor="let serie of series | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; index as i"
+            [routerLink]="['/serie/', serie._id]"
+            class="item"
+        >
+
+            <img src="../../../assets/images/no-image.png" *ngIf="serie.image==''" />
+            <img src="{{ serie.image }}" *ngIf="serie.image!=''" />
+            <div class="img-footer">SERIE</div>
+
+            <h2>{{ serie.title }}</h2>
+
+            <p>Añadido {{ serie.created_at | amLocale:'es' | amTimeAgo }}</p>
+
+        </a>
+
+        <div class="clearfix"></div>
+
+        <pagination-controls
+            (pageChange)="page = $event"
+            [autoHide]="true"
+            [directionLinks]="true"
+            previousLabel=""
+            nextLabel=""
+        >
+        </pagination-controls>
+
+    </div>
+    
+
+</section>

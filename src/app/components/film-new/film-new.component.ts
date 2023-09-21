@@ -20,7 +20,6 @@ export class FilmNewComponent implements OnInit{
   public genders: String[];
   public resolutions: String[];
   public codecs: String[];
-  public vieweds: String[];
 
   constructor(
     private _filmService: FilmService,
@@ -34,7 +33,6 @@ export class FilmNewComponent implements OnInit{
     this.genders = environment.genders;
     this.resolutions = environment.resolutions;
     this.codecs = environment.codecs;
-    this.vieweds = environment.viewed;
 
   }
 

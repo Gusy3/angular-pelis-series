@@ -1,0 +1,19 @@
+<section id="login" class="center">
+
+    <h1>LOGIN</h1>
+
+    <form #userForm="ngForm" (ngSubmit)="userForm.valid && onSubmit()">
+
+        <input type="text" name="username" placeholder="Usuario" [(ngModel)]="user.username" />
+        <input type="password" name="password" placeholder="Contraseña" [(ngModel)]="user.password" />
+
+        <small class="msg-validator" *ngIf="userForm.submitted && error">El usuario o la contraseña son incorrectas</small>
+
+        <!-- LIMPIAR FLOTADOS -->
+        <div class="clearfix"></div>
+
+        <input type="submit" name="submit" value="ENTRAR"/>
+
+    </form>
+
+</section>

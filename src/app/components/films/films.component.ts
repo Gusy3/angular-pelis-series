@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Film } from 'src/app/models/film';
 import { FilmService } from 'src/app/services/film.service';
 
@@ -8,37 +8,21 @@ import { FilmService } from 'src/app/services/film.service';
   styleUrls: ['./films.component.css'],
   providers: [FilmService]
 })
-export class FilmsComponent implements OnInit, OnChanges{
+export class FilmsComponent implements OnInit{
 
-  public page: number = 1;
-  public itemsPerPage: number = 20;
-  @Input() public films: Film[];
-  private change: boolean;
+  public page: number;
+  public itemsPerPage: number;
+  public films: Film[];
 
   constructor(
     private _filmService: FilmService
   ){
+    this.page = 1;
+    this.itemsPerPage = 20;
     this.films = [];
-    this.change = false;
-  }
-
-  ngOnChanges(changes: SimpleChanges): void{
-
-    if(!changes.films.firstChange){
-
-      this.page = 1;
-
-    }else{
-
-      this.change = true;
-
-    }
-
   }
 
   ngOnInit(): void{
-
-    if(!this.change){
 
       this._filmService.getFilms().subscribe(
 
@@ -59,8 +43,6 @@ export class FilmsComponent implements OnInit, OnChanges{
         }
 
       );
-
-    }
 
   }
 

@@ -1,22 +1,23 @@
 <section id="content">
 
-    <h1 class="subheader">PELÍCULAS</h1>
+    <h1 class="subheader">PELÍCULAS: {{ films.length }}</h1>
 
-    <div id="films" *ngIf="films && films.length==0">
+    <div id="items" *ngIf="films && films.length==0">
 
         <p>No hay películas para mostrar</p>
 
     </div>
 
-    <div id="films" *ngIf="films">
+    <div id="items" *ngIf="films">
 
         <a *ngFor="let film of films | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; index as i"
             [routerLink]="['/pelicula/', film._id]"
-            class="film"
+            class="item"
         >
 
             <img src="../../../assets/images/no-image.png" *ngIf="film.image==''" />
             <img src="{{ film.image }}" *ngIf="film.image!=''" />
+            <div class="img-footer">PELÍCULA</div>
 
             <h2>{{ film.title }}</h2>
 
@@ -26,7 +27,14 @@
 
         <div class="clearfix"></div>
 
-        <pagination-controls (pageChange)="page = $event" [autoHide]="true" [directionLinks]="false"></pagination-controls>
+        <pagination-controls
+            (pageChange)="page = $event"
+            [autoHide]="true"
+            [directionLinks]="true"
+            previousLabel=""
+            nextLabel=""
+        >
+        </pagination-controls>
 
     </div>
     

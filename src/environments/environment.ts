@@ -5,10 +5,9 @@
 export const environment = {
   production: false,
   versions: ['Normal', 'Extendida'],
-  genders: ['Acción', 'Animación', 'Ciencia Ficción', 'Comedia', 'Drama', 'Fantasía', 'Melodrama', 'Musical', 'Romance', 'Suspense', 'Terror', 'Thriller'],
+  genders: ['Acción', 'Animación', 'Aventuras', 'Biográfico', 'Bélico', 'Ciencia Ficción', 'Comedia', 'Crimen', 'Drama', 'Fantastico', 'Infantil', 'Intriga', 'Melodrama', 'Musical', 'Romance', 'Sobrenatural', 'Suspense', 'Terror', 'Thriller', 'Western'],
   resolutions: ['1080p', '720p'],
   codecs: ['x265', 'x264'],
-  viewed: ['Sí', 'No'],
   apiUrl: 'http://localhost:3900/api/'
 };
 

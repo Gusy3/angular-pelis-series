@@ -15,6 +15,7 @@ export class FilmComponent implements OnInit{
 
   public film: Film;
   public apiUrl: string;
+  public genders: string;
 
   constructor(
     private _filmService: FilmService,
@@ -23,6 +24,7 @@ export class FilmComponent implements OnInit{
   ){
     this.film = new Film('', '', '', '', 0, '', '', 0, '', '', '', new Date());
     this.apiUrl = environment.apiUrl;
+    this.genders = '';
   }
 
   ngOnInit(): void{
@@ -38,6 +40,7 @@ export class FilmComponent implements OnInit{
           if(response.film){
 
             this.film = response.film;
+            this.getFilmGenders(this.film.gender);
 
           }
           else{
@@ -56,6 +59,24 @@ export class FilmComponent implements OnInit{
       );
 
     });
+
+  }
+
+  getFilmGenders(genders: String){
+
+    for (let i = 0; i<genders.length; i++){
+
+      if(i == genders.length - 1){
+
+        this.genders += genders[i];
+
+      }else{
+
+        this.genders += genders[i]+", ";
+
+      }
+
+    }
 
   }
 

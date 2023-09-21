@@ -20,7 +20,6 @@ export class FilmEditComponent implements OnInit{
   public genders: String[];
   public resolutions: String[];
   public codecs: String[];
-  public vieweds: String[];
 
   constructor(
     private _filmService: FilmService,
@@ -35,7 +34,6 @@ export class FilmEditComponent implements OnInit{
     this.genders = environment.genders;
     this.resolutions = environment.resolutions;
     this.codecs = environment.codecs;
-    this.vieweds = environment.viewed;
 
   }
 
@@ -78,12 +76,9 @@ export class FilmEditComponent implements OnInit{
 
     });
 
-
   }
 
   onSubmit(){
-
-    console.log(this.film);
 
     this._filmService.update(this.film._id, this.film).subscribe(
       response=>{
@@ -100,7 +95,7 @@ export class FilmEditComponent implements OnInit{
             'success'
           );
 
-          this._router.navigate(['/peliculas']);
+          this._router.navigate(['/pelicula', this.film._id]);
 
         }
 

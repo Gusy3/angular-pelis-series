@@ -1,0 +1,44 @@
+<section id="content">
+
+    <h1 class="subheader">{{subheaderTitle}}</h1>
+
+    <form class="mid-form" #seasonForm="ngForm" (ngSubmit)="seasonForm.valid && onSubmit()">
+
+        <div class="form-group">
+            <label for="title">Título:</label>
+            <input type="text" name="title" #title="ngModel" [(ngModel)]="season.title"
+                [ngClass]="{ 'input-error': !title.valid && (title.dirty || title.touched || seasonForm.submitted) }"
+                required
+            />
+
+            <small class="msg-validator" *ngIf="!title.valid && (title.dirty || title.touched || seasonForm.submitted)">El título es requerido</small>
+        </div>
+
+        <div class="form-group">
+            <label for="viewed">Visto:</label>
+
+            <div class="radio">
+
+                <input type="radio" name="viewed" #viewed="ngModel" value="Sí" [(ngModel)]="season.viewed"
+                    [ngClass]="{ 'input-error': !viewed.valid && seasonForm.submitted }"
+                    required />
+                <label for="si">Sí</label>
+                
+                <input type="radio" name="viewed" #viewed="ngModel" value="No" [(ngModel)]="season.viewed"
+                    [ngClass]="{ 'input-error': !viewed.valid && seasonForm.submitted }"
+                    required />
+                <label for="no">No</label>
+
+            </div>
+
+            <small class="msg-validator" *ngIf="!viewed.valid && seasonForm.submitted">No has seleccionado si lo has visto, por favor selecciona uno</small>
+        </div>
+
+        <!-- LIMPIAR FLOTADOS -->
+        <div class="clearfix"></div>
+
+        <input type="submit" value="{{submitValue}}" class="btn btn-success" />
+
+    </form>
+
+  </section>

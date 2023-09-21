@@ -8,12 +8,12 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit{
 
-  public title: string;
+  public search: string;
 
   constructor(
     private _router: Router
   ){
-    this.title = '';
+    this.search = '';
   }
 
   ngOnInit(): void {
@@ -21,7 +21,7 @@ export class SidebarComponent implements OnInit{
 
   goSearch(){
 
-    this._router.navigate(['/buscar', this.title]);
+    this._router.navigate(['/buscar'], {queryParams: {title: this.search}});
 
   }
 

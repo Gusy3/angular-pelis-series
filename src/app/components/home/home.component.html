@@ -1,5 +1,41 @@
 <section id="content">
 
-    <p>home works!</p>
+    <h1 class="subheader">HOME</h1>
+
+    <div id="items" *ngIf="items && items.length==0">
+
+        <p>No hay peliculas ni series para mostrar</p>
+
+    </div>
+
+    <div id="items" *ngIf="items">
+
+        <a *ngFor="let item of items | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; index as i"
+            [routerLink]="item.category=='pelicula' ? ['/pelicula/', item._id] : ['/serie/', item._id]"
+            class="item"
+        >
+
+            <img src="../../../assets/images/no-image.png" *ngIf="item.image==''" />
+            <img src="{{ item.image }}" *ngIf="item.image!=''" />
+            <div class="img-footer">{{ item.category=='pelicula' ? 'PELÍCULA' : 'SERIE' }}</div>
+
+            <h2>{{ item.title }}</h2>
+
+            <p>Añadido {{ item.created_at | amLocale:'es' | amTimeAgo }}</p>
+
+        </a>
+
+        <div class="clearfix"></div>
+
+        <pagination-controls
+        (pageChange)="page = $event"
+        [autoHide]="true"
+        [directionLinks]="true"
+        previousLabel=""
+        nextLabel=""
+        >
+        </pagination-controls>
+
+    </div>
 
 </section>

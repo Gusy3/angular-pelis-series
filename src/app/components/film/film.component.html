@@ -2,44 +2,48 @@
 
     <h1 class="subheader">{{ film.title }}</h1>
 
-    <div class="center film-detail">
+    <div class="center item-detail">
 
-        <div class="image">
-
-            <img src="../../../assets/images/no-image.png" *ngIf="film.image==''" />
-            <img src="{{ film.image }}" *ngIf="film.image!=''" />
-
-        </div>
-        
         <div class="data">
 
-            <dl>
+            <div class="image">
 
-                <dt>Año:</dt>
-                <dd>{{film.year}}</dd>
+                <img src="../../../assets/images/no-image.png" *ngIf="film.image==''" />
+                <img src="{{ film.image }}" *ngIf="film.image!=''" />
 
-                <dt>Versión:</dt>
-                <dd>{{film.version}}</dd>
+            </div>
+        
+            <div class="information">
 
-                <dt>Género:</dt>
-                <dd>{{film.gender}}</dd>
-                
-                <dt>Resolución:</dt>
-                <dd>{{film.resolution}}</dd>
-                
-                <dt>Codec:</dt>
-                <dd>{{film.codec}}</dd>
-                
-                <dt>Tamaño:</dt>
-                <dd>{{film.size}} GB</dd>
+                <dl>
 
-                <dt>Creado:</dt>
-                <dd>{{film.created_at | amLocal | amDateFormat: 'DD/MM/YYYY'}}</dd>
-                
-                <dt>Visto:</dt>
-                <dd>{{film.viewed}}</dd>
+                    <dt>Año:</dt>
+                    <dd>{{film.year}}</dd>
 
-            </dl>
+                    <dt>Versión:</dt>
+                    <dd>{{film.version}}</dd>
+
+                    <dt>Género:</dt>
+                    <dd>{{genders}}</dd>
+                    
+                    <dt>Resolución:</dt>
+                    <dd>{{film.resolution}}</dd>
+                    
+                    <dt>Codec:</dt>
+                    <dd>{{film.codec}}</dd>
+                    
+                    <dt>Tamaño:</dt>
+                    <dd>{{film.size}} GB</dd>
+
+                    <dt>Creado:</dt>
+                    <dd>{{film.created_at | amLocal | amDateFormat: 'DD/MM/YYYY'}}</dd>
+                    
+                    <dt>Visto:</dt>
+                    <dd>{{film.viewed}}</dd>
+
+                </dl>
+
+            </div>
 
         </div>
 

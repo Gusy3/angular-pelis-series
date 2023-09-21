@@ -15,16 +15,16 @@ export class FilmService{
         this.apiUrl = environment.apiUrl; 
     }
 
-    create(film: Film):Observable<any>{
+    create(film: Film): Observable<any>{
 
         let params = JSON.stringify(film);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-        return this._http.post(this.apiUrl+'save', params, {headers: headers});
+        return this._http.post(this.apiUrl+'film/save', params, {headers: headers});
 
     }
 
-    getFilms():Observable<any>{
+    getFilms(): Observable<any>{
 
         return this._http.get(this.apiUrl+'films');
 
@@ -48,12 +48,6 @@ export class FilmService{
     delete(id: String): Observable<any>{
 
         return this._http.delete(this.apiUrl+'film/'+id);
-
-    }
-
-    search(search: String): Observable<any>{
-
-        return this._http.get(this.apiUrl+'search/'+search);
 
     }
 
