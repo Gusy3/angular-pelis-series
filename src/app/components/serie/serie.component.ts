@@ -6,7 +6,7 @@ import { SeasonService } from 'src/app/services/season.service';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import swal from 'sweetalert';
+declare var swal: any;
 
 @Component({
   selector: 'app-serie',
@@ -193,7 +193,7 @@ export class SerieComponent implements OnInit{
       buttons: [true, true],
       dangerMode: true
     })
-    .then((willDelete)=>{
+    .then((willDelete: any)=>{
       if (willDelete){
 
         this._serieService.delete(idSerie).subscribe(
@@ -240,7 +240,7 @@ export class SerieComponent implements OnInit{
       buttons: [true, true],
       dangerMode: true
     })
-    .then((willDelete)=>{
+    .then((willDelete: any)=>{
       if (willDelete){
 
         this._seasonService.delete(idSeason).subscribe(
@@ -287,7 +287,7 @@ export class SerieComponent implements OnInit{
       buttons: [true, true],
       dangerMode: true
     })
-    .then((willDelete)=>{
+    .then((willDelete: any)=>{
       if (willDelete){
 
         this._chapterService.delete(idChapter).subscribe(

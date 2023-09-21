@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Season } from 'src/app/models/season';
 import { SeasonService } from 'src/app/services/season.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import swal from 'sweetalert';
+declare var swal: any;
 
 @Component({
   selector: 'app-season-new',

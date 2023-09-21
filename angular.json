@@ -30,7 +30,9 @@
               "src/custom-theme.scss",
               "src/assets/css/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/scripts/sweetalert.min.js"
+            ]
           },
           "configurations": {
             "production": {

@@ -3,7 +3,7 @@ import { Film } from 'src/app/models/film';
 import { environment } from 'src/environments/environment';
 import { FilmService } from 'src/app/services/film.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import swal from 'sweetalert';
+declare var swal: any;
 
 @Component({
   selector: 'app-film-edit',

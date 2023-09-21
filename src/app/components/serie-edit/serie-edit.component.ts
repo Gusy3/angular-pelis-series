@@ -3,7 +3,7 @@ import { Serie } from 'src/app/models/serie';
 import { SerieService } from 'src/app/services/serie.service';
 import { environment } from 'src/environments/environment';
 import { Router, ActivatedRoute } from '@angular/router';
-import swal from 'sweetalert';
+declare var swal: any;
 
 @Component({
   selector: 'app-serie-edit',

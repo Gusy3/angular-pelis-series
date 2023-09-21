@@ -3,7 +3,7 @@ import { Chapter } from 'src/app/models/chapter';
 import { environment } from 'src/environments/environment';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import swal from 'sweetalert';
+declare var swal: any;
 
 @Component({
   selector: 'app-chapter-new',

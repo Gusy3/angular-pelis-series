@@ -3,7 +3,7 @@ import { Film } from 'src/app/models/film';
 import { FilmService } from 'src/app/services/film.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import swal from 'sweetalert';
+declare var swal: any;
 
 @Component({
   selector: 'app-film',
@@ -89,7 +89,7 @@ export class FilmComponent implements OnInit{
       buttons: [true, true],
       dangerMode: true
     })
-    .then((willDelete)=>{
+    .then((willDelete: any)=>{
       if (willDelete){
 
         this._filmService.delete(idFilm).subscribe(
