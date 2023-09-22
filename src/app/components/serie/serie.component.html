@@ -81,16 +81,16 @@
 
                     <div #icons class="accordion-icons">
                         <a [routerLink]="['/serie', serie._id, 'temporada', season._id, 'crear-capitulo']">
-                            <img src="../../../assets/images/add_icon_white.png" title="Añadir Capítulo" class="accordion-icon">
+                            <img src="assets/images/add_icon_white.png" title="Añadir Capítulo" class="accordion-icon">
                         </a>
                         <a [routerLink]="['/serie', serie._id, 'editar-temporada', season._id]">
-                            <img src="../../../assets/images/edit_icon_white.png" title="Editar Temporada" class="accordion-icon">
+                            <img src="assets/images/edit_icon_white.png" title="Editar Temporada" class="accordion-icon">
                         </a>
                         <a (click)="deleteSeason(season._id)">
-                            <img src="../../../assets/images/delete_icon_white.png" title="Borrar Temporada" class="accordion-icon">
+                            <img src="assets/images/delete_icon_white.png" title="Borrar Temporada" class="accordion-icon">
                         </a>
-                        <img src="../../../assets/images/arrow_down_icon_white.png" title="Mostrar Capítulos" (click)="accordionItem.toggle()" *ngIf="!accordionItem.expanded" class="accordion-icon accordion-arrow-down">
-                        <img src="../../../assets/images/arrow_up_icon_white.png" title="Ocultar Capítulos" (click)="accordionItem.toggle()" *ngIf="accordionItem.expanded" class="accordion-icon accordion-arrow-up">
+                        <img src="assets/images/arrow_down_icon_white.png" title="Mostrar Capítulos" (click)="accordionItem.toggle()" *ngIf="!accordionItem.expanded" class="accordion-icon accordion-arrow-down">
+                        <img src="assets/images/arrow_up_icon_white.png" title="Ocultar Capítulos" (click)="accordionItem.toggle()" *ngIf="accordionItem.expanded" class="accordion-icon accordion-arrow-up">
 
                     </div>
 
@@ -113,10 +113,10 @@
                         <div #icons class="accordion-icons">
 
                             <a [routerLink]="['/serie', serie._id, 'editar-capitulo', chapter._id]">
-                                <img src="../../../assets/images/edit_icon_white.png" title="Editar Capítulo" class="accordion-icon">
+                                <img src="assets/images/edit_icon_white.png" title="Editar Capítulo" class="accordion-icon">
                             </a>
                             <a (click)="deleteChapter(chapter._id)">
-                                <img src="../../../assets/images/delete_icon_white.png" title="Borrar Capítulo" class="accordion-icon">
+                                <img src="assets/images/delete_icon_white.png" title="Borrar Capítulo" class="accordion-icon">
                             </a>
 
                         </div>
