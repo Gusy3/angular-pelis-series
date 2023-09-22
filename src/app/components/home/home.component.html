@@ -21,7 +21,7 @@
             class="item"
         >
 
-            <img src="../../../assets/images/no-image.png" *ngIf="item.image==''" />
+            <img src="assets/images/no-image.png" *ngIf="item.image==''" />
             <img src="{{ item.image }}" *ngIf="item.image!=''" />
             <div class="img-footer">{{ item.category=='pelicula' ? 'PELÍCULA' : 'SERIE' }}</div>
 
