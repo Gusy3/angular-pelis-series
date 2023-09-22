@@ -2,7 +2,13 @@
 
     <h1 class="subheader">HOME</h1>
 
-    <div id="items" *ngIf="items && items.length==0">
+    <div id="items" *ngIf="loading">
+
+        <p>Cargando...</p>
+
+    </div>
+
+    <div id="items" *ngIf="!loading && items.length==0">
 
         <p>No hay peliculas ni series para mostrar</p>
 

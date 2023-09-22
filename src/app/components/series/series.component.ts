@@ -13,32 +13,16 @@ export class SeriesComponent implements OnInit{
   public page: number = 1;
   public itemsPerPage: number = 20;
   public series: Serie[];
-  private change: boolean;
+  public loading: boolean;
 
   constructor(
     private _serieService: SerieService
   ){
     this.series = [];
-    this.change = false;
+    this.loading = true;
   }
-/*
-  ngOnChanges(changes: SimpleChanges): void{
-
-    if(!changes.films.firstChange){
-
-      this.page = 1;
-
-    }else{
-
-      this.change = true;
-
-    }
-
-  }
-*/
+  
   ngOnInit(): void{
-
-    if(!this.change){
 
       this._serieService.getSeries().subscribe(
 
@@ -47,6 +31,7 @@ export class SeriesComponent implements OnInit{
           if(response.status=="success"){
 
             this.series = response.series;
+            this.loading = false;
 
           }
 
@@ -59,8 +44,6 @@ export class SeriesComponent implements OnInit{
         }
 
       );
-
-    }
 
   }
 

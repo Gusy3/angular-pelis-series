@@ -4,7 +4,13 @@
 
     <h4>Resultados encontrados que incluyen "{{ search }}"</h4>
 
-    <div id="items" *ngIf="films_series && films_series.length==0">
+    <div id="items" *ngIf="loading">
+
+        <p>Cargando...</p>
+
+    </div>
+
+    <div id="items" *ngIf="!loading && films_series.length==0">
 
         <p>No hay peliculas ni series encontradas con esta busqueda</p>
 
@@ -17,7 +23,7 @@
             class="item"
         >
 
-            <img src="../../../assets/images/no-image.png" *ngIf="item.image==''" />
+            <img src="assets/images/no-image.png" *ngIf="item.image==''" />
             <img src="{{ item.image }}" *ngIf="item.image!=''" />
             <div class="img-footer">{{ item.category=='pelicula' ? 'PELÍCULA' : 'SERIE' }}</div>
 

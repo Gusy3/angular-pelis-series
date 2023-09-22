@@ -12,12 +12,14 @@ export class HomeComponent implements OnInit{
   public items: any;
   public page: number = 1;
   public itemsPerPage: number = 20;
+  public loading: boolean;
 
   constructor(
     private _filmSerieService: FilmSerieService,
   ){
 
     this.items = [];
+    this.loading = true;
 
   }
 
@@ -36,6 +38,7 @@ export class HomeComponent implements OnInit{
         if(response.status=="success"){
 
           this.items = response.films_series;
+          this.loading = false;
 
         }
 

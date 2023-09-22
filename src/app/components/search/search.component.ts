@@ -1,6 +1,6 @@
-import { Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FilmSerieService } from 'src/app/services/film_serie.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -14,13 +14,17 @@ export class SearchComponent implements OnInit{
   public search: String;
   public page: number = 1;
   public itemsPerPage: number = 20;
+  public loading: boolean;
 
   constructor(
     private _filmSerieService: FilmSerieService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _router: Router
   ){
     this.films_series = [];
     this.search = "";
+    this.loading = true;
+    this._router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit(): void{
@@ -33,11 +37,12 @@ export class SearchComponent implements OnInit{
 
           response=>{
 
-            if(response.films_series){
+            if(response.status=="success"){
 
               this.films_series = response.films_series;
               this.page = 1;
-
+              this.loading = false;
+  
             }else{
 
               this.films_series = [];
@@ -54,7 +59,6 @@ export class SearchComponent implements OnInit{
         );
 
       });
-
 
   }
 

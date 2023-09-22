@@ -2,7 +2,13 @@
 
     <h1 class="subheader">SERIES: {{ series.length }}</h1>
 
-    <div id="items" *ngIf="series && series.length==0">
+    <div id="items" *ngIf="loading">
+
+        <p>Cargando...</p>
+
+    </div>
+
+    <div id="items" *ngIf="!loading && series.length==0">
 
         <p>No hay series para mostrar</p>
 
@@ -15,7 +21,7 @@
             class="item"
         >
 
-            <img src="../../../assets/images/no-image.png" *ngIf="serie.image==''" />
+            <img src="assets/images/no-image.png" *ngIf="serie.image==''" />
             <img src="{{ serie.image }}" *ngIf="serie.image!=''" />
             <div class="img-footer">SERIE</div>
 
