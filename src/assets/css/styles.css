@@ -425,7 +425,6 @@ textarea:focus{
 .accordion{
     display: block;
     margin-top: 30px;
-    font-size: 15px;
 }
   
 .accordion-item{
@@ -444,21 +443,26 @@ textarea:focus{
 
 .accordion-icons{
     float: right;
-    margin-top: 12px;
+    margin-top: 10.5px;
     margin-right: 10px;
 }
 
-.accordion-item-body .accordion-icons{
-    margin-right: 41px;
+.accordion-item-body{
+    overflow: hidden;
+    height: 0px;
 }
 
-.accordion-item-body + .accordion-item-body{
+.accordion-item-body-open .accordion-icons{
+    margin-right: 50px;
+}
+
+.accordion-item-body-open + .accordion-item-body-open{
     border-top: solid 1px #E20000;
 }
   
 .accordion-item-header,
 .accordion-item-header-expanded,
-.accordion-item-body{
+.accordion-item-body-open{
     height: 45px;
     line-height: 45px;
 }
@@ -476,15 +480,15 @@ textarea:focus{
 
 .accordion-icons img{
     display: block;
-    padding: 2px;
+    padding: 3px;
     background: black;
     border-radius: 3px;
 }
 
 .accordion-icon{
     float: left;
-    width: 16px;
-    margin-right: 3px;
+    width: 18px;
+    margin-right: 5px;
     cursor: pointer;
 }
 
@@ -496,7 +500,7 @@ textarea:focus{
 .accordion-arrow-down,
 .accordion-arrow-up{
     margin-right: 0px;
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 /* PAGINACIÓN */

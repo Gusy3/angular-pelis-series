@@ -8,7 +8,7 @@
 
             <div class="image">
 
-                <img src="assets/images/no-image.png" *ngIf="serie.image==''" />
+                <img src="../../../assets/images/no-image.png" *ngIf="serie.image==''" />
                 <img src="{{ serie.image }}" *ngIf="serie.image!=''" />
 
             </div>
@@ -61,25 +61,18 @@
 
         <div class="clearfix"></div>
 
-        <cdk-accordion class="accordion" *ngIf="serie.seasons">
-            <cdk-accordion-item
-                *ngFor="let season of serie.seasons; let index = index;"
-                #accordionItem="cdkAccordionItem"
-                class="accordion-item"
-                role="button"
-                tabindex="0"
-                [attr.id]="'accordion-header-' + index"
-                [attr.aria-expanded]="accordionItem.expanded"
-                [attr.aria-controls]="'accordion-body-' + index">
-                <div [ngClass]="{ 'accordion-item-header': !accordionItem.expanded, 'accordion-item-header-expanded': accordionItem.expanded }"
-                     (mouseenter)="!accordionItem.expanded"
-                >
+        <div class="accordion" *ngIf="serie.seasons">
+
+            <div *ngFor="let season of serie.seasons; let index = index;" class="accordion-item">
+
+                <div [ngClass]="accordionActive===index ? 'accordion-item-header-expanded': 'accordion-item-header'">
+
                     <div class="accordion-item-description"><strong>{{ season.title }}</strong> ({{ totalChapters[index] }} Capítulos) - 
                         <strong>Tamaño: </strong>{{ seasonSize[index] }} GB /
                         <strong>Visto: </strong>{{ season.viewed }}
                     </div>
 
-                    <div #icons class="accordion-icons">
+                    <div class="accordion-icons">
                         <a [routerLink]="['/serie', serie._id, 'temporada', season._id, 'crear-capitulo']">
                             <img src="assets/images/add_icon_white.png" title="Añadir Capítulo" class="accordion-icon">
                         </a>
@@ -89,21 +82,14 @@
                         <a (click)="deleteSeason(season._id)">
                             <img src="assets/images/delete_icon_white.png" title="Borrar Temporada" class="accordion-icon">
                         </a>
-                        <img src="assets/images/arrow_down_icon_white.png" title="Mostrar Capítulos" (click)="accordionItem.toggle()" *ngIf="!accordionItem.expanded" class="accordion-icon accordion-arrow-down">
-                        <img src="assets/images/arrow_up_icon_white.png" title="Ocultar Capítulos" (click)="accordionItem.toggle()" *ngIf="accordionItem.expanded" class="accordion-icon accordion-arrow-up">
+                        <img src="assets/images/arrow_down_icon_white.png" title="Mostrar Capítulos" (click)="toggle(index)" *ngIf="accordionActive!==index" class="accordion-icon accordion-arrow-down">
+                        <img src="assets/images/arrow_up_icon_white.png" title="Ocultar Capítulos" (click)="toggle(index)" *ngIf="accordionActive===index" class="accordion-icon accordion-arrow-up">
 
                     </div>
 
-                </div>
+                </div>    
                 
-                    <div
-                        *ngFor="let chapter of season.chapters"
-                        class="accordion-item-body"
-                        role="region"
-                        [style.display]="accordionItem.expanded ? '' : 'none'"
-                        [attr.id]="'accordion-body-' + index"
-                        [attr.aria-labelledby]="'accordion-header-' + index"
-                    >
+                    <div *ngFor="let chapter of season.chapters" [ngClass]="accordionActive===index ? 'accordion-item-body-open' : 'accordion-item-body'">
                         <div class="accordion-item-description">
                             <strong>* {{ chapter.title }}</strong> ({{ chapter.resolution }} {{ chapter.codec }}) -
                             <strong>Tamaño:</strong> {{ chapter.size }} GB /
@@ -122,17 +108,14 @@
                         </div>
 
                     </div>
-                    <div
-                        *ngIf="!season.chapters || season.chapters.length==0"
-                        class="accordion-item-body"
-                        role="region"
-                        [style.display]="accordionItem.expanded ? '' : 'none'"
-                    >
+                    <div [ngClass]="accordionActive===index ? 'accordion-item-body-open' : 'accordion-item-body'">
+
                         Esta temporada no tiene capítulos
                         
                     </div>
-            </cdk-accordion-item>
-        </cdk-accordion>
+            </div>
+
+        </div>
 
     </div>
 

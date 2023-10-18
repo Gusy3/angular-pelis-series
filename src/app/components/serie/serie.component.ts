@@ -6,7 +6,7 @@ import { SeasonService } from 'src/app/services/season.service';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
-declare var swal: any;
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-serie',
@@ -24,6 +24,7 @@ export class SerieComponent implements OnInit{
   public totalChapters: Number[];
   public seasonSize: Number[];
   public serieSize: number;
+  public accordionActive: any;
 
   constructor(
     private _serieService: SerieService,
@@ -40,6 +41,7 @@ export class SerieComponent implements OnInit{
     this.totalChapters = [];
     this.seasonSize = [];
     this.serieSize = 0;
+    this.accordionActive = null;
   }
 
   ngOnInit(): void{
@@ -193,7 +195,7 @@ export class SerieComponent implements OnInit{
       buttons: [true, true],
       dangerMode: true
     })
-    .then((willDelete: any)=>{
+    .then((willDelete)=>{
       if (willDelete){
 
         this._serieService.delete(idSerie).subscribe(
@@ -240,7 +242,7 @@ export class SerieComponent implements OnInit{
       buttons: [true, true],
       dangerMode: true
     })
-    .then((willDelete: any)=>{
+    .then((willDelete)=>{
       if (willDelete){
 
         this._seasonService.delete(idSeason).subscribe(
@@ -287,7 +289,7 @@ export class SerieComponent implements OnInit{
       buttons: [true, true],
       dangerMode: true
     })
-    .then((willDelete: any)=>{
+    .then((willDelete)=>{
       if (willDelete){
 
         this._chapterService.delete(idChapter).subscribe(
@@ -324,5 +326,17 @@ export class SerieComponent implements OnInit{
     });
 
   }
+
+  toggle(index: number){
+
+    if(this.accordionActive === index){
+
+      return this.accordionActive = null;
+
+    }
+
+    return this.accordionActive = index;
+
+}
 
 }
