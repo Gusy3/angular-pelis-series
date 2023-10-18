@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MomentModule } from 'ngx-moment';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { CdkAccordionModule } from '@angular/cdk/accordion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +22,6 @@ import { SeriesComponent } from './components/series/series.component';
 import { SerieNewComponent } from './components/serie-new/serie-new.component';
 import { SerieComponent } from './components/serie/serie.component';
 import { SerieEditComponent } from './components/serie-edit/serie-edit.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SeasonNewComponent } from './components/season-new/season-new.component';
 import { SeasonEditComponent } from './components/season-edit/season-edit.component';
 import { ChapterNewComponent } from './components/chapter-new/chapter-new.component';
@@ -64,9 +62,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     FormsModule,
     HttpClientModule,
     MomentModule,
-    NgxPaginationModule,
-    NoopAnimationsModule,
-    CdkAccordionModule
+    NgxPaginationModule
   ],
   providers: [
     AuthGuard,
